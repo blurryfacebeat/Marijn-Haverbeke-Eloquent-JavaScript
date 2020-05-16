@@ -83,4 +83,3 @@ class HomeWork {
 }
 
 const test = new HomeWork();
-console.log(test.reverseArray(arr));
