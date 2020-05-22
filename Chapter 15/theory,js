@@ -1,1 +1,67 @@
+const p = document.querySelector('p');
+console.log(p.textContent);
+console.log(p.previousElementSibling.textContent);
+console.log(p.nextElementSibling.textContent);
+// Сканирует документ, находит текстовые узлы, возвращает true,
+// если таковая найдена
+function talksAbout(node, string) {
+    if (node.nodeType == Node.ELEMENT_NODE) {
+        for (let i = 0; i < node.childNodes.length; i++) {
+            if (talksAbout(node.childNodes[i], string)) {
+                return true;
+            }
+        }
+        return false;
+    } else if (node.nodeType == Node.TEXT_NODE) {
+        return node.nodeValue.indexOf(string) > -1;
+    }
+}
 
+console.log(talksAbout(document.body, 'book'));
+
+const div = document.createElement('div');
+div.textContent = 'Три четыре'
+const h3 = document.createElement('h3');
+h3.textContent = 'Пять шесть'
+document.body.insertBefore(div, p);
+p.previousElementSibling.append(h3);
+// document.body.replaceChild(1, 2) заменяет один дочерный
+// элемент на второй дочерний элемент
+
+// Заменяем каждый img текстом, содержащимся в его alt
+const changeBtn = document.getElementById('change');
+changeBtn.addEventListener('click', () => {
+    let images = document.body.querySelectorAll('img');
+    for (let i = images.length - 1; i >= 0; i--) {
+        let image = images[i];
+        if (image.alt) {
+            let text = document.createTextNode(image.alt);
+            image.parentNode.replaceChild(text, image);
+        }
+    }
+});
+// getAttribute setAttribute
+let paras = document.querySelectorAll('.aaa');
+for (let para of Array.from(paras)) {
+    if (para.getAttribute('data-classified') == 'secret') {
+        para.remove();
+    }
+}
+const test = document.querySelector('.test');
+// Общие размеры объекта
+console.log(test.offsetWidth, test.offsetHeight);
+// Размеры без рамки
+console.log(test.clientWidth, test.clientHeight);
+// Определение точного местоположения элемента на экране
+console.log(test.getBoundingClientRect());
+// Анимация движения квадрата по эллипсу
+let angle = Math.PI / 2;
+function animate (time, lastTime) {
+    if (lastTime != null) {
+        angle += (time - lastTime) * 0.001;
+    }
+    test.style.top = (Math.sin(angle) * 20) + 'px';
+    test.style.left = (Math.cos(angle) * 200) +'px';
+    requestAnimationFrame(newTime => animate(newTime, time));
+}
+requestAnimationFrame(animate);
