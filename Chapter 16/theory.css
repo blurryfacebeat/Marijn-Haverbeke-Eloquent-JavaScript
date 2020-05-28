@@ -1,0 +1,25 @@
+.dot {
+    height: 8px;
+    width: 8px;
+    position: absolute;
+
+    border-radius: 4px;
+    background-color: blue;
+}
+
+.dot2 {
+    position: absolute; 
+    display: block;
+    border: 2px solid red; 
+    border-radius: 50px;
+    height: 100px; 
+    width: 100px;
+}
+
+#progress {
+    border-bottom: 2px solid blue;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
