@@ -24,3 +24,20 @@ function handleArrow() {
 }
 
 document.body.addEventListener('keydown', handleArrow);
+
+//2 
+let dots = [];
+for (let i = 0; i < 20; i++) {
+    let node = document.createElement('div');
+    node.className = 'trail';
+    document.body.appendChild(node);
+    dots.push(node);
+}
+let currentDot = 0;
+
+window.addEventListener('mousemove', event => {
+    let dot = dots[currentDot];
+    dot.style.left = (event.pageX - 3) + 'px';
+    dot.style.top = (event.pageY - 3) + 'px';
+    currentDot = (currentDot + 1) % dots.length;
+});
