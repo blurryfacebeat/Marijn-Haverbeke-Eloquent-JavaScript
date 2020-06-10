@@ -5,3 +5,35 @@
     border-radius: 3px;
     background: teal;
 }
+
+.info {
+    margin: 0 auto;
+    text-align: center;
+
+    width: 600px;
+    border: 1px solid ghostwhite;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    margin-bottom: 30px;
+    padding: 0;
+
+    list-style: none;
+}
+
+.tabs__item {
+    padding: 20px 30px;
+    border: 1px solid ghostwhite;
+    border-bottom: 2px solid seagreen;
+
+    cursor: pointer;
+}
+
+.info_item {
+    border: 1px solid darkkhaki;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+}
